@@ -2,5 +2,6 @@
 Versioning
 **********
 
-pipipxx releases follow `_Semantic Versioning`_.
+pipipxx releases follow `Semantic Versioning`_.
+
 .. _Semantic Versioning: https://semver.org
