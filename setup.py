@@ -6,12 +6,16 @@ import sys
 
 from setuptools import setup
 
+HERE = os.path.abspath(os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(HERE, "src"))
+
+import pipipxx  # noqa isort:skip
+
+
 if sys.version_info < (3, 6, 0):
-    print("Python 3.6+ is required")
-    exit(1)
+    exit("Python 3.6+ is required")
 
 VERSION_RE = re.compile(r"""__version__ = ['"]([0-9.]+)['"]""")
-HERE = os.path.abspath(os.path.dirname(__file__))
 
 
 def read(*args):
@@ -19,15 +23,9 @@ def read(*args):
     return io.open(os.path.join(HERE, *args), encoding="utf-8").read()
 
 
-def get_version():
-    """Read the version from this module."""
-    init = read("src", "pipipxx.py")
-    return VERSION_RE.search(init).group(1)
-
-
 setup(
     name="pipipxx",
-    version=get_version(),
+    version=pipipxx.__version__,
     packages=[""],
     package_dir={"": "src"},
     url="https://github.com/mattsb42/pipipxx",
@@ -36,7 +34,7 @@ setup(
     maintainer="Matt Bullock",
     description="pipipxx (pronounced pipx in pipx): Bootstrap your pipx with pipx.",
     long_description=read("README.rst"),
-    keywords="pipipxx pipipxx",
+    keywords="pipipxx pipx",
     data_files=["README.rst", "CHANGELOG.rst", "LICENSE", "requirements.txt"],
     licence="Apache 2.0",
     classifiers=[
@@ -48,6 +46,6 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: Implementation :: CPython"
-    ]
+        "Programming Language :: Python :: Implementation :: CPython",
+    ],
 )
