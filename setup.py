@@ -4,6 +4,7 @@ import os
 import sys
 
 from setuptools import setup
+from setuptools.command.install import install
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(HERE, "src"))
@@ -15,6 +16,14 @@ if sys.version_info < (3, 6, 0):
     exit("Python 3.6+ is required")
 
 
+class BootstrapInstall(install):
+    """Bootstrap "install" command that runs the pipx bootstrap."""
+
+    def run(self):
+        """Bootstrap pipx."""
+        pipipxx.bootstrap()
+
+
 def read(*args):
     """Read complete file contents."""
     return io.open(os.path.join(HERE, *args), encoding="utf-8").read()
@@ -23,7 +32,7 @@ def read(*args):
 setup(
     name="pipipxx",
     version=pipipxx.__version__,
-    packages=[""],
+    packages=[],
     package_dir={"": "src"},
     url="https://github.com/mattsb42/pipipxx",
     author="Matt Bullock",
@@ -45,4 +54,5 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: Implementation :: CPython",
     ],
+    cmdclass=dict(install=BootstrapInstall),
 )
