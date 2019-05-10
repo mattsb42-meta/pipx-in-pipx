@@ -1,7 +1,7 @@
 """Bootstrap pipx without installing anything to any system Python environments."""
 import os
 import pathlib
-import subprocess
+import subprocess  # nosec : bandit B404 is addressed by only executing pre-defined commands
 import sys
 import tempfile
 import venv
@@ -23,7 +23,9 @@ def _build_venv(venv_dir: str):
 
 
 def _execute_command(command: str) -> (str, str):
-    proc = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8", shell=True)
+    proc = subprocess.run(  # nosec : bandit B602 is addressed by only executing pre-defined commands
+        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8", shell=True
+    )
     print(proc.stdout, flush=True)  # noqa
     if proc.stderr:
         print(proc.stderr, file=sys.stderr, flush=True)  # noqa
