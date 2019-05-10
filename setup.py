@@ -21,13 +21,15 @@ def read(*args):
 
 def get_version():
     """Read the version from this module."""
-    init = read("src", "pipipxx", "__init__.py")
+    init = read("src", "pipipxx.py")
     return VERSION_RE.search(init).group(1)
 
 
 setup(
     name="pipipxx",
     version=get_version(),
+    packages=[""],
+    package_dir={"": "src"},
     url="https://github.com/mattsb42/pipipxx",
     author="Matt Bullock",
     author_email="m@ttsb42.com",
