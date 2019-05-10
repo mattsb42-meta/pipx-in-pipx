@@ -7,12 +7,12 @@ import tempfile
 import venv
 
 __version__ = "0.0.1"
-UPDATE_PIP = "pip install --upgrade pip"
-INSTALL_BOOTSTRAP_REQUIREMENTS = "pip install pipx userpath"
-BOOTSTRAP_PIPX = f"pipx install pipx --python {sys.executable} --force"
+UPDATE_PIP = "python -m pip install --upgrade pip"
+INSTALL_BOOTSTRAP_REQUIREMENTS = "python -m pip install pipx userpath"
+BOOTSTRAP_PIPX = f"python -m pipx install pipx --python {sys.executable} --force"
 LOCAL_BIN = pathlib.Path.home() / ".local" / "bin"
-PATCH_PATH = f"userpath append {LOCAL_BIN} --force"
-VERIFY_PATH = f"userpath verify {LOCAL_BIN}"
+PATCH_PATH = f"python -m userpath append {LOCAL_BIN} --force"
+VERIFY_PATH = f"python -m userpath verify {LOCAL_BIN}"
 NOTICE_WIDTH = 64
 
 
