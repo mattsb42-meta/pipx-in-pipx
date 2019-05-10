@@ -1,7 +1,6 @@
 """pipipxx."""
 import io
 import os
-import re
 import sys
 
 from setuptools import setup
@@ -14,8 +13,6 @@ import pipipxx  # noqa isort:skip pylint: disable=wrong-import-position
 
 if sys.version_info < (3, 6, 0):
     exit("Python 3.6+ is required")
-
-VERSION_RE = re.compile(r"""__version__ = ['"]([0-9.]+)['"]""")
 
 
 def read(*args):
