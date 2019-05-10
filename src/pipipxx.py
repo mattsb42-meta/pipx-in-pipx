@@ -11,7 +11,7 @@ UPDATE_PIP = "python -m pip install --upgrade pip"
 INSTALL_BOOTSTRAP_REQUIREMENTS = "python -m pip install pipx userpath"
 BOOTSTRAP_PIPX = f"python -m pipx install pipx --python {sys.executable} --force"
 LOCAL_BIN = pathlib.Path.home() / ".local" / "bin"
-PATCH_PATH = f"python -m userpath append {LOCAL_BIN} --force"
+PATCH_PATH = f"python -m userpath append {LOCAL_BIN}"
 VERIFY_PATH = f"python -m userpath verify {LOCAL_BIN}"
 NOTICE_WIDTH = 64
 
