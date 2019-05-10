@@ -9,7 +9,7 @@ from setuptools import setup
 HERE = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(HERE, "src"))
 
-import pipipxx  # noqa isort:skip
+import pipipxx  # noqa isort:skip pylint: disable=wrong-import-position
 
 
 if sys.version_info < (3, 6, 0):
@@ -36,7 +36,7 @@ setup(
     long_description=read("README.rst"),
     keywords="pipipxx pipx",
     data_files=["README.rst", "CHANGELOG.rst", "LICENSE", "requirements.txt"],
-    licence="Apache 2.0",
+    license="Apache 2.0",
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",

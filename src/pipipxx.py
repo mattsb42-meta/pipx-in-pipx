@@ -24,9 +24,9 @@ def _build_venv(venv_dir: str):
 
 def _execute_command(command: str) -> (str, str):
     proc = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8", shell=True)
-    print(proc.stdout, flush=True)
+    print(proc.stdout, flush=True)  # noqa
     if proc.stderr:
-        print(proc.stderr, file=sys.stderr, flush=True)
+        print(proc.stderr, file=sys.stderr, flush=True)  # noqa
     return proc.stdout, proc.stderr
 
 
@@ -35,16 +35,17 @@ def _execute_in_venv(venv_dir: str, command: str) -> (str, str):
 
 
 def bootstrap():
+    """Bootstrap ``pipx`` in your ``~/.local/`` using ``pipx`` in a temporary venv."""
     with tempfile.TemporaryDirectory() as venv_dir:
         # 1. Create tempfiles venv.
         # 2. Install pipx in tempfiles venv.
-        print(" Building bootstrapping venv ".center(NOTICE_WIDTH, "#"), flush=True)
+        print(" Building bootstrapping venv ".center(NOTICE_WIDTH, "#"), flush=True)  # noqa
         _build_venv(venv_dir)
         # 3. Use tempfiles pipx to install pipx pipx.
-        print(" Installing local pipx using bootstrapping pipx ".center(NOTICE_WIDTH, "#"), flush=True)
+        print(" Installing local pipx using bootstrapping pipx ".center(NOTICE_WIDTH, "#"), flush=True)  # noqa
         _execute_in_venv(venv_dir, BOOTSTRAP_PIPX)
         # 4. Append ~/.local/bin to path.
-        print(" Verifying that PATH includes local bin ".center(NOTICE_WIDTH, "#"), flush=True)
+        print(" Verifying that PATH includes local bin ".center(NOTICE_WIDTH, "#"), flush=True)  # noqa
         _execute_in_venv(venv_dir, PATCH_PATH)
         # 5. Determine if the shell needs to be restarted and print an appropriate message.
         _execute_in_venv(venv_dir, VERIFY_PATH)

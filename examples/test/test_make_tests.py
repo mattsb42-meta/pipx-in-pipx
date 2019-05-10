@@ -3,6 +3,6 @@ import pytest
 
 
 @pytest.mark.xfail(strict=True)
-@pytext.mark.examples
+@pytest.mark.examples
 def test_write_tests():
     assert False
