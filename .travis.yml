@@ -1,0 +1,46 @@
+sudo: true
+dist: xenial
+
+language: python
+
+cache:
+    directories:
+        - $HOME/.cache/pip
+
+matrix:
+    include:
+        # CPython 3.6
+        - python: 3.6
+          env: TOXENV=py36-local
+          stage: Client Tests
+        - python: 3.6
+          env: TOXENV=py36-integ
+          stage: Client Tests
+        - python: 3.6
+          env: TOXENV=py36-examples
+          stage: Client Tests
+        # CPython 3.7
+        - python: 3.7
+          env: TOXENV=py37-local
+          stage: Client Tests
+        - python: 3.7
+          env: TOXENV=py37-integ
+          stage: Client Tests
+        - python: 3.7
+          env: TOXENV=py37-examples
+          stage: Client Tests
+        # Security
+        - python: 3.7
+          env: TOXENV=bandit
+          stage: Static Checks
+        # Linting
+        - python: 3.7
+          env: TOXENV=lint
+          stage: Static Checks
+        # MyPy
+        - python: 3.7
+          env: TOXENV=mypy
+          stage: Static Checks
+
+install: pip install tox
+script: tox -- -vv

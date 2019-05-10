@@ -1,0 +1,24 @@
+# Python/dev-tools
+tox
+pyenv
+cpython
+CPython
+
+# Project-specific
+pipipxx
+
+# GitHub tags
+wontfix
+
+# General dev words
+arg
+args
+config
+changelog
+github
+plugin
+pre
+runtimes
+util
+utils
+versioning
