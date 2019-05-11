@@ -6,7 +6,7 @@ import sys
 import tempfile
 import venv
 
-__version__ = "0.0.1"
+__version__ = "0.0.1b0"
 UPDATE_PIP = "python -m pip install --upgrade pip"
 INSTALL_BOOTSTRAP_REQUIREMENTS = "python -m pip install pipx userpath"
 BOOTSTRAP_PIPX = f"python -m pipx install pipx --python {sys.executable} --force"

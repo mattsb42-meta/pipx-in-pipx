@@ -44,7 +44,7 @@ setup(
     data_files=["README.rst", "CHANGELOG.rst", "LICENSE", "requirements.txt"],
     license="Apache 2.0",
     classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Natural Language :: English",
         "License :: OSI Approved :: Apache Software License",
