@@ -6,6 +6,8 @@ import sys
 import tempfile
 import venv
 
+from setuptools.command.install import install
+
 __version__ = "0.0.1b0"
 UPDATE_PIP = "python -m pip install --upgrade pip"
 INSTALL_BOOTSTRAP_REQUIREMENTS = "python -m pip install pipx userpath"
@@ -51,3 +53,11 @@ def bootstrap():
         _execute_in_venv(venv_dir, PATCH_PATH)
         # 5. Determine if the shell needs to be restarted and print an appropriate message.
         _execute_in_venv(venv_dir, VERIFY_PATH)
+
+
+class BootstrapInstall(install):
+    """Bootstrap "install" command that runs the pipx bootstrap."""
+
+    def run(self):
+        """Bootstrap pipx."""
+        bootstrap()

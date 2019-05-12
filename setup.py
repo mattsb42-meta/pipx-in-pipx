@@ -4,7 +4,6 @@ import os
 import sys
 
 from setuptools import setup
-from setuptools.command.install import install
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(HERE, "src"))
@@ -13,15 +12,9 @@ import pipipxx  # noqa isort:skip pylint: disable=wrong-import-position
 
 
 if sys.version_info < (3, 6, 0):
+    # pipx requires Python 3.6+ https://github.com/pipxproject/pipx/pull/39
+    # Fail early.
     exit("Python 3.6+ is required")
-
-
-class BootstrapInstall(install):
-    """Bootstrap "install" command that runs the pipx bootstrap."""
-
-    def run(self):
-        """Bootstrap pipx."""
-        pipipxx.bootstrap()
 
 
 def read(*args):
@@ -54,5 +47,5 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: Implementation :: CPython",
     ],
-    cmdclass=dict(install=BootstrapInstall),
+    cmdclass=dict(install=pipipxx.BootstrapInstall),
 )
