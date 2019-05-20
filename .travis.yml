@@ -12,26 +12,7 @@ matrix:
         # Install Check
         - python: 3.6
           env: INSTALL_CHECK=YES
-        # CPython 3.6
-        - python: 3.6
-          env: TOXENV=py36-local
-          stage: Client Tests
-        - python: 3.6
-          env: TOXENV=py36-integ
-          stage: Client Tests
-        - python: 3.6
-          env: TOXENV=py36-examples
-          stage: Client Tests
-        # CPython 3.7
-        - python: 3.7
-          env: TOXENV=py37-local
-          stage: Client Tests
-        - python: 3.7
-          env: TOXENV=py37-integ
-          stage: Client Tests
-        - python: 3.7
-          env: TOXENV=py37-examples
-          stage: Client Tests
+          stage: Tests
         # Security
         - python: 3.7
           env: TOXENV=bandit
