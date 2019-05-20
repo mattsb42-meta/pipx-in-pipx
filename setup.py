@@ -8,7 +8,12 @@ from setuptools import setup
 HERE = os.path.abspath(os.path.dirname(__file__))
 sys.path.insert(0, os.path.join(HERE, "src"))
 
-import pipipxx  # noqa isort:skip pylint: disable=wrong-import-position
+try:
+    import pipipxx  # noqa isort:skip pylint: disable=wrong-import-position
+except ImportError:
+    print("Python path: ", sys.path)
+    print("Here: ", HERE)
+    raise
 
 
 if sys.version_info < (3, 6, 0):
