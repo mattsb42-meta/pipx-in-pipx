@@ -9,6 +9,9 @@ cache:
 
 matrix:
     include:
+        # Install Check
+        - python: 3.6
+          env: INSTALL_CHECK=YES
         # CPython 3.6
         - python: 3.6
           env: TOXENV=py36-local
@@ -43,4 +46,9 @@ matrix:
           stage: Static Checks
 
 install: pip install tox
-script: tox -- -vv
+script:
+    - |
+      if [[ -n INSTALL_CHECK ]];
+        then .travis/install-check.sh;
+        else tox -- -vv;
+      fi;
