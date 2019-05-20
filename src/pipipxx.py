@@ -40,6 +40,9 @@ def _execute_in_venv(venv_dir: str, command: str) -> (str, str):
 
 def bootstrap():
     """Bootstrap ``pipx`` in your ``~/.local/`` using ``pipx`` in a temporary venv."""
+    if "VIRTUAL_ENV" in os.environ:
+        raise EnvironmentError("pipipxx cannot be used inside a virtual environment.")
+
     with tempfile.TemporaryDirectory() as venv_dir:
         # 1. Create tempfiles venv.
         # 2. Install pipx in tempfiles venv.
