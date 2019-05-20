@@ -13,6 +13,7 @@ try:
 except ImportError:
     print("Python path: ", sys.path)
     print("Here: ", HERE)
+    print("File exists?: ", os.path.exists(os.path.join(HERE, "pipipxx.py")))
     raise
 
 
