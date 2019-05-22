@@ -23,7 +23,6 @@ INSTALL_BOOTSTRAP_REQUIREMENTS = "python -m pip install pipx userpath"
 BOOTSTRAP_PIPX = f"python -m pipx install pipx --python {sys.executable} --force"
 LOCAL_BIN = pathlib.Path.home() / ".local" / "bin"
 PATCH_PATH = f"python -m userpath append {LOCAL_BIN}"
-VERIFY_PATH = f"python -m userpath verify {LOCAL_BIN}"
 NOTICE_WIDTH = 64
 
 
@@ -63,8 +62,6 @@ def bootstrap():
         # 4. Append ~/.local/bin to path.
         print(" Verifying that PATH includes local bin ".center(NOTICE_WIDTH, "#"), flush=True)  # noqa
         _execute_in_venv(venv_dir, PATCH_PATH)
-        # 5. Determine if the shell needs to be restarted and print an appropriate message.
-        _execute_in_venv(venv_dir, VERIFY_PATH)
 
 
 class BootstrapInstall(install):
