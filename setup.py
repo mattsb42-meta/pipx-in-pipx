@@ -5,10 +5,11 @@ import pathlib
 import subprocess  # nosec : bandit B404 is addressed by only executing pre-defined commands
 import sys
 import tempfile
-import venv
+import venv  # type: ignore
+from typing import Tuple
 
-from setuptools import setup
-from setuptools.command.install import install
+from setuptools import setup  # type: ignore
+from setuptools.command.install import install  # type: ignore
 
 __version__ = "1.0.0"
 HERE = os.path.abspath(os.path.dirname(__file__))
@@ -26,7 +27,7 @@ def _build_venv(venv_dir: str):
     _execute_in_venv(venv_dir, INSTALL_BOOTSTRAP_REQUIREMENTS)
 
 
-def _execute_command(command: str) -> (str, str):
+def _execute_command(command: str) -> Tuple[str, str]:
     proc = subprocess.run(  # nosec : bandit B602 is addressed by only executing pre-defined commands
         command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8", shell=True
     )
@@ -36,11 +37,11 @@ def _execute_command(command: str) -> (str, str):
     return proc.stdout, proc.stderr
 
 
-def _execute_in_venv(venv_dir: str, command: str) -> (str, str):
+def _execute_in_venv(venv_dir: str, command: str) -> Tuple[str, str]:
     return _execute_command(os.path.join(venv_dir, "bin", command))
 
 
-def bootstrap():
+def bootstrap() -> None:
     """Bootstrap ``pipx`` in your ``~/.local/`` using ``pipx`` in a temporary venv."""
     if "VIRTUAL_ENV" in os.environ:
         raise EnvironmentError("pipipxx cannot be used inside a virtual environment.")
@@ -61,12 +62,12 @@ def bootstrap():
 class BootstrapInstall(install):
     """Bootstrap "install" command that runs the pipx bootstrap."""
 
-    def run(self):
+    def run(self) -> None:
         """Bootstrap pipx."""
         bootstrap()
 
 
-def read(*args):
+def read(*args: str) -> str:
     """Read complete file contents."""
     return io.open(os.path.join(HERE, *args), encoding="utf-8").read()
 
