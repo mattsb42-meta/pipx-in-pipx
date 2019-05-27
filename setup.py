@@ -10,11 +10,6 @@ import venv
 from setuptools import setup
 from setuptools.command.install import install
 
-if sys.version_info < (3, 6, 0):
-    # pipx requires Python 3.6+ https://github.com/pipxproject/pipx/pull/39
-    # Fail early.
-    exit("Python 3.6+ is required")
-
 
 __version__ = "0.0.1b0"
 HERE = os.path.abspath(os.path.dirname(__file__))
