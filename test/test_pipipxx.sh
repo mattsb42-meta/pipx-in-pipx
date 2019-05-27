@@ -38,7 +38,7 @@ install_and_verify () {
     [[ -h "${TMP_HOME}/.local/bin/pipx" ]] && die "ERROR: pipx bin symlink already exists!"
 
     echo "pipx installing pipx"
-    pip install ${DIST_FILE}
+    pip install ${DIST_FILE} -vv
 
     echo "Verifying the pipx IS installed"
     [[ -d "${TMP_HOME}/.local/pipx/venvs/pipx" ]] || die "ERROR: pipx venv not created!"
