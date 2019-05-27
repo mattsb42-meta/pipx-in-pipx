@@ -1,6 +1,8 @@
 version: 0.2
 
 phases:
+    install:
+            python: "$PYTHON_BUILD_VERSION"
     build:
         commands:
             - tox -e build && ./test/test_pipipxx.sh "$(pwd)dist"
