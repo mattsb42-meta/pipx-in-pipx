@@ -10,7 +10,6 @@ import venv
 from setuptools import setup
 from setuptools.command.install import install
 
-
 __version__ = "1.0.0"
 HERE = os.path.abspath(os.path.dirname(__file__))
 UPDATE_PIP = "python -m pip install --upgrade pip"
