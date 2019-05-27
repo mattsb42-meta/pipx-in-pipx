@@ -11,7 +11,7 @@ from setuptools import setup
 from setuptools.command.install import install
 
 
-__version__ = "0.0.1b0"
+__version__ = "0.0.1b1"
 HERE = os.path.abspath(os.path.dirname(__file__))
 UPDATE_PIP = "python -m pip install --upgrade pip"
 INSTALL_BOOTSTRAP_REQUIREMENTS = "python -m pip install pipx userpath"
