@@ -9,26 +9,10 @@ cache:
 
 matrix:
     include:
-        # CPython 3.6
+        # Install Check
         - python: 3.6
-          env: TOXENV=py36-local
-          stage: Client Tests
-        - python: 3.6
-          env: TOXENV=py36-integ
-          stage: Client Tests
-        - python: 3.6
-          env: TOXENV=py36-examples
-          stage: Client Tests
-        # CPython 3.7
-        - python: 3.7
-          env: TOXENV=py37-local
-          stage: Client Tests
-        - python: 3.7
-          env: TOXENV=py37-integ
-          stage: Client Tests
-        - python: 3.7
-          env: TOXENV=py37-examples
-          stage: Client Tests
+          env: INSTALL_CHECK=YES
+          stage: Tests
         # Security
         - python: 3.7
           env: TOXENV=bandit
@@ -43,4 +27,9 @@ matrix:
           stage: Static Checks
 
 install: pip install tox
-script: tox -- -vv
+script:
+    - |
+      if [[ -n INSTALL_CHECK ]];
+        then .travis/install-check.sh;
+        else tox -- -vv;
+      fi;
