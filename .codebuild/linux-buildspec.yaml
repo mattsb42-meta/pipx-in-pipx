@@ -1,0 +1,6 @@
+version: 0.2
+
+phases:
+    build:
+        commands:
+            - tox -e build && ./test/test_pipipxx.sh "$(pwd)dist"
