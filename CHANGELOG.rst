@@ -2,6 +2,12 @@
 Changelog
 *********
 
+1.0.0 -- 2019-05-26
+===================
+
+Now that I have CI set up for this on at least one platform,
+I am comfortable saying that it is ready for use.
+
 0.0.1b1 -- 2019-05-22
 =====================
 

@@ -21,10 +21,6 @@ pipipxx
 .. image:: https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiQU5URTJKdnBHQkFwTStnckNjNGlaUGZQNk51V0s1V1JDL0FIUjBERWNmYnNnckM5Vy8vNlZNOWUxWElMLyt3SjlVY2RhSTk3QlByaDZsOEVkZFYzWDVNPSIsIml2UGFyYW1ldGVyU3BlYyI6Ik53bU14aTBqQkFkWmpET2UiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master
    :alt: Linux Python 3.7
 
-.. important::
-
-    This project is a work in progress and is not yet ready for use.
-
 `pipx`_ is great for keeping your CLI tools isolated and your system Python paths clean.
 However, it still requires that you install `pipx`_ *itself* in your system Python.
 
