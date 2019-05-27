@@ -9,10 +9,6 @@ cache:
 
 matrix:
     include:
-        # Security
-        - python: 3.7
-          env: TOXENV=bandit
-          stage: Static Checks
         # Linting
         - python: 3.7
           env: TOXENV=lint
