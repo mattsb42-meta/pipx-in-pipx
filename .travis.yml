@@ -1,0 +1,23 @@
+sudo: true
+dist: xenial
+
+language: python
+
+cache:
+    directories:
+        - $HOME/.cache/pip
+
+matrix:
+    include:
+        # Linting
+        - python: 3.7
+          env: TOXENV=lint
+          stage: Static Checks
+        # MyPy
+        - python: 3.7
+          env: TOXENV=mypy
+          stage: Static Checks
+
+install: pip install tox
+script:
+    - tox -- -vv

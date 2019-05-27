@@ -18,7 +18,12 @@ pipipxx
    :target: https://pipipxx.readthedocs.io/en/stable/
    :alt: Documentation Status
 
+.. image:: https://travis-ci.org/awslabs/pipipxx.svg?branch=master
+   :target: https://travis-ci.org/awslabs/pipipxx
+   :alt: Travis CI Test Status
+
 .. image:: https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiQU5URTJKdnBHQkFwTStnckNjNGlaUGZQNk51V0s1V1JDL0FIUjBERWNmYnNnckM5Vy8vNlZNOWUxWElMLyt3SjlVY2RhSTk3QlByaDZsOEVkZFYzWDVNPSIsIml2UGFyYW1ldGVyU3BlYyI6Ik53bU14aTBqQkFkWmpET2UiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master
+   :target: https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiQU5URTJKdnBHQkFwTStnckNjNGlaUGZQNk51V0s1V1JDL0FIUjBERWNmYnNnckM5Vy8vNlZNOWUxWElMLyt3SjlVY2RhSTk3QlByaDZsOEVkZFYzWDVNPSIsIml2UGFyYW1ldGVyU3BlYyI6Ik53bU14aTBqQkFkWmpET2UiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master
    :alt: Linux Python 3.7
 
 `pipx`_ is great for keeping your CLI tools isolated and your system Python paths clean.
