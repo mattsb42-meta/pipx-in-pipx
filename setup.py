@@ -29,7 +29,7 @@ def _build_venv(venv_dir: str):
 
 def _execute_command(command: str) -> Tuple[str, str]:
     proc = subprocess.run(  # nosec : bandit B602 is addressed by only executing pre-defined commands
-        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8", shell=True
+        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8", shell=True, check=False
     )
     print(proc.stdout, flush=True)  # noqa
     if proc.stderr:
