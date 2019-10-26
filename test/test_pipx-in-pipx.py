@@ -32,7 +32,7 @@ def _target_source_build(dist_path: str) -> Path:
 
     source_builds = [i for i in dist_dir.iterdir() if i.is_file() and i.suffixes[-2:] == [".tar", ".gz"]]
     if not source_builds:
-        _fail(f"dist-directory {dist_dir.name} contains no source build artifacts!")
+        _fail(f"dist-directory {dist_dir.absolute()} contains no source build artifacts!")
 
     return source_builds[-1]
 
@@ -49,7 +49,7 @@ def _verify_is_installed(fake_home: Path) -> Path:
             raise FileNotFoundError
         return pipx_bin
     except FileNotFoundError:
-        _fail(f"pipx is not installed in {fake_home.name}")
+        _fail(f"pipx is not installed in {fake_home.absolute()}")
 
 
 def _verify_not_installed(fake_home: Path):
@@ -65,12 +65,12 @@ def install_and_verify(source_build: Path, fake_home: Path) -> None:
     _verify_not_installed(fake_home)
 
     env = os.environ.copy()
-    env["HOME"] = fake_home.name
-    subprocess.run(["pip", "install", source_build.name, "-vv"], check=True)
+    env["HOME"] = str(fake_home.absolute())
+    subprocess.run(["pip", "install", str(source_build.absolute()), "-vv"], check=True)
 
     pipx_bin = _verify_is_installed(fake_home)
 
-    result = subprocess.run([pipx_bin.name, "--help"], check=False)
+    result = subprocess.run([str(pipx_bin.absolute()), "--help"], check=False)
     print(result.stdout)
     print(result.stderr)
 
