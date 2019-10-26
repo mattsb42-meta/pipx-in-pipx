@@ -38,9 +38,7 @@ def _execute_command(command: str) -> Tuple[str, str]:
 
 
 def _execute_in_venv(venv_dir: str, command: str) -> Tuple[str, str]:
-    return _execute_command(
-        os.path.join(venv_dir, "bin" if os.name != "nt" else "Scripts", command)
-    )
+    return _execute_command(os.path.join(venv_dir, "bin" if os.name != "nt" else "Scripts", command))
 
 
 def bootstrap() -> None:
