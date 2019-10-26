@@ -83,3 +83,7 @@ def main(args=None):
 
     with tempfile.TemporaryDirectory() as fake_home:
         install_and_verify(source_build, Path(fake_home))
+
+
+if __name__ == "__main__":
+    main()
