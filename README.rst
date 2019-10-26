@@ -33,11 +33,11 @@ But `pipx`_ is a CLI tool installed through ``pip``...why not install `pipx`_ wi
 Why not indeed!
 
 
-With ``pipipxx`` (pronounced "pipx in pipx"), all you need to do is:
+With ``pipipxx`` (pronounced "pipx in pipx"),all you need to do is install :
 
 .. code:: shell
 
-    $ pip install pipipxx
+    $ pip install pipx-in-pipx
 
 But wait! You say.
 Didn't you just say that we shouldn't install things to system Python?
