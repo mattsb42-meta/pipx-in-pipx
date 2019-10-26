@@ -98,5 +98,11 @@ SETUP_KWARGS = dict(
     cmdclass=dict(install=BootstrapInstall),
 )
 
-for name in ("pipipxx", "pipx-in-pipx"):
+SETUP_NAMES = ["pipx-in-pipx"]
+ADDITIONAL_BUILD_NAMES = ["pipipxx"]
+
+if "BUILDING_PIPX_IN_PIX" in os.environ:
+    SETUP_NAMES += ADDITIONAL_BUILD_NAMES
+
+for name in SETUP_NAMES:
     setup(name=name, **SETUP_KWARGS)
