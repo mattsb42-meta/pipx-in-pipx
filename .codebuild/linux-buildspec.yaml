@@ -8,7 +8,5 @@ phases:
             - pip install --upgrade pip tox
     build:
         commands:
-            - ls
-            - tox -e build && ls
-            - ls dist/
+            - tox -e build
             - python test/test_pipx-in-pipx.py --dist-directory "$(pwd)/dist"
