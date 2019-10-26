@@ -65,8 +65,8 @@ def install_and_verify(source_build: Path, fake_home: Path) -> None:
     _verify_not_installed(fake_home)
 
     env = os.environ.copy()
-    env["HOME"] = str(fake_home.absolute())
-    subprocess.run(["pip", "install", str(source_build.absolute()), "-vv"], check=True)
+    env["HOME"] = env["USERPROFILE"] = str(fake_home.absolute())
+    subprocess.run(["pip", "install", str(source_build.absolute()), "-vv"], check=True, env=env)
 
     pipx_bin = _verify_is_installed(fake_home)
 
