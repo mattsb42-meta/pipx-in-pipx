@@ -72,7 +72,7 @@ def read(*args: str) -> str:
     return io.open(os.path.join(HERE, *args), encoding="utf-8").read()
 
 
-setup_kwargs = dict(
+SETUP_KWARGS = dict(
     version=__version__,
     url="https://github.com/mattsb42/pipipxx",
     author="Matt Bullock",
@@ -99,4 +99,4 @@ setup_kwargs = dict(
 )
 
 for name in ("pipipxx", "pipx-in-pipx"):
-    setup(name=name, **setup_kwargs)
+    setup(name=name, **SETUP_KWARGS)
