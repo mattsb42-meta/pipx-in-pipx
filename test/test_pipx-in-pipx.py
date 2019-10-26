@@ -13,7 +13,12 @@ def _fail(error_message: str):
     sys.exit(f"ERROR: {error_message}")
 
 
+def _banner(message: str):
+    print(f" {message} ".center(64))
+
+
 def _target_source_build(dist_path: str) -> Path:
+    _banner("Locating the source build")
 
     try:
         dist_dir = Path(dist_path)
@@ -31,6 +36,7 @@ def _target_source_build(dist_path: str) -> Path:
 
 
 def _verify_is_installed(fake_home: Path) -> Path:
+    _banner("Verifying the pipx IS installed")
     try:
         pipx_venv = fake_home / ".local" / "pipx" / "venvs" / "pipx"
         pipx_bin = fake_home / ".local" / "Scripts" if os.name == "nt" else "bin" / "pipx"
@@ -45,6 +51,7 @@ def _verify_is_installed(fake_home: Path) -> Path:
 
 
 def _verify_not_installed(fake_home: Path):
+    _banner("Verifying the pipx is NOT installed")
     try:
         _verify_is_installed(fake_home)
     except SystemExit:
