@@ -30,12 +30,7 @@ def _target_source_build(dist_path: str) -> Path:
     except FileNotFoundError:
         _fail("dist-directory does not exist!")
 
-    print([
-        (i.name, i.suffixes)
-        for i in dist_dir.iterdir()
-    ])
-
-    source_builds = [i for i in dist_dir.iterdir() if i.is_file() and i.suffixes == [".tar", "-gz"]]
+    source_builds = [i for i in dist_dir.iterdir() if i.is_file() and i.suffixes[-2:] == [".tar", "-gz"]]
     if not source_builds:
         _fail(f"dist-directory {dist_dir.name} contains no source build artifacts!")
 
