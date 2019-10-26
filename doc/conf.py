@@ -29,7 +29,7 @@ def get_version():
     return _release
 
 
-project = u"pipipxx"
+project = u"pipx-in-pipx"
 version = get_version()
 release = get_release()
 

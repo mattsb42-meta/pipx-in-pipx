@@ -1,6 +1,6 @@
-#######
-pipipxx
-#######
+############
+pipx-in-pipx
+############
 
 .. image:: https://img.shields.io/pypi/v/pipipxx.svg
    :target: https://pypi.python.org/pypi/pipipxx
@@ -33,19 +33,19 @@ But `pipx`_ is a CLI tool installed through ``pip``...why not install `pipx`_ wi
 Why not indeed!
 
 
-With ``pipipxx`` (pronounced "pipx in pipx"), all you need to do is:
+With ``pipx-in-pipx``, all you need to do is install :
 
 .. code:: shell
 
-    $ pip install pipipxx
+    $ pip install pipx-in-pipx
 
 But wait! You say.
 Didn't you just say that we shouldn't install things to system Python?
 
 Yes.
-What ``pipipxx`` actually does is slightly (but only slightly) evil.
+What ``pipx-in-pipx`` actually does is slightly (but only slightly) evil.
 Rather than actually installing anything when you run "install",
-``pipipxx`` instead builds a temporary virtual environment,
+``pipx-in-pipx`` instead builds a temporary virtual environment,
 installs `pipx`_ there,
 and then uses *that* `pipx`_ to install `pipx`_ in your user local space,
 just like any other `pipx`_-installed tool.
@@ -61,9 +61,9 @@ Which Python?
 
 By default, `pipx`_ uses its own Python for each environment that it creates.
 Normally, this would be the system Python, whatever it was when you installed `pipx`_.
-However, when your are using a ``pipipxx``-installed `pipx`_,
+However, when your are using a ``pipx-in-pipx``-installed `pipx`_,
 the default Python that `pipx`_ uses for each environment it creates is instead
-whatever Python you used to "install" ``pipipxx``.
+whatever Python you used to "install" ``pipx-in-pipx``.
 
 This has two notable side effects:
 
@@ -82,12 +82,12 @@ Because you have now made `pipx`_ manage itself,
 running ``pipx uninstall-all`` *will also* uninstall `pipx`_.
 
 This is not a bug, but a feature.
-By installing `pipx`_ using ``pipipxx``,
+By installing `pipx`_ using ``pipx-in-pipx``,
 you have expressed an intent that you *want* `pipx`_ to manage itself.
 If that's not what you want, this is not the tool for you.
 
 If you at any point uninstall your `pipx`_-managed `pipx`_,
-you can simply ``pip install pipipxx`` again to rebuild it.
+you can simply ``pip install pipx-in-pipx`` again to rebuild it.
 
 
 .. _pipx: https://pipxproject.github.io/pipx/
