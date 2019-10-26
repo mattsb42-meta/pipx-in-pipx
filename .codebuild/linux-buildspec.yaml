@@ -10,5 +10,5 @@ phases:
         commands:
             - ls
             - tox -e build && ls
-            - ls
+            - ls dist/
             - python test/test_pipx-in-pipx.py --dist-directory "$(pwd)/dist"
