@@ -32,7 +32,7 @@ def _target_source_build(dist_path: str) -> Path:
 
     source_builds = [i for i in dist_dir.iterdir() if i.is_file() and i.suffixes == [".tar", "-gz"]]
     if not source_builds:
-        _fail("dist-directory contains no source build artifacts!")
+        _fail(f"dist-directory {dist_dir.name} contains no source build artifacts!")
 
 
 def _verify_is_installed(fake_home: Path) -> Path:
