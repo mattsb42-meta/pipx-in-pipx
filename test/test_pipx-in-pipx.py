@@ -41,7 +41,7 @@ def _verify_is_installed(fake_home: Path) -> Path:
     _banner("Verifying the pipx IS installed")
     try:
         pipx_venv = fake_home / ".local" / "pipx" / "venvs" / "pipx"
-        pipx_bin = fake_home / ".local" / ("Scripts" if os.name == "nt" else "bin") / "pipx"
+        pipx_bin = fake_home / ".local" /"bin" / "pipx"
         if not (pipx_venv.is_dir() and pipx_bin.is_file()):
             # Normalize so that this error is raised
             #  whether the path does not exist
