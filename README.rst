@@ -29,8 +29,8 @@ pipx-in-pipx
 .. |Read The Docs| image:: https://readthedocs.org/projects/pipx-in-pipx/badge/
    :target: https://pipx-in-pipx.readthedocs.io/
    :alt: Documentation Status
-.. |Travis CI| image:: https://travis-ci.org/mattsb42/pipipxx.svg?branch=master
-   :target: https://travis-ci.org/mattsb42/pipipxx
+.. |Travis CI| image:: https://travis-ci.org/mattsb42/pipx-in-pipx.svg?branch=master
+   :target: https://travis-ci.org/mattsb42/pipx-in-pipx
    :alt: Travis CI Test Status
 .. |CodeBuild Linux CPython 3.7| image:: https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiZi9uT0MrNGNXV2RSbitIdTBhM1BXTDBSR2ZjbEZmK3lBTmUxS1hkbUc5azFXVDIwdnFOdjRwUG95QnNHUDFwV0xjemhXcDcvVjdaNFEweGdVRFBsdEZNPSIsIml2UGFyYW1ldGVyU3BlYyI6Ik9TRWdNbmpMKzRwZGxvMUIiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master
    :target: https://us-west-2.console.aws.amazon.com/codesuite/codebuild/projects/LinuxCodeBuild-s5JgvxjQs15C/history?region=us-west-2
