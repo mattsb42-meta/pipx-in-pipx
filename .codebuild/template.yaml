@@ -39,7 +39,7 @@ Resources:
                 BuildSpec: .codebuild/buildspec.yaml
                 InsecureSsl: false
                 Type: GITHUB
-                Location: https://github.com/mattsb42/pipipxx.git
+                Location: https://github.com/mattsb42/pipx-in-pipx.git
                 ReportBuildStatus: true
             BadgeEnabled: true
             Artifacts:
@@ -75,7 +75,7 @@ Resources:
                 BuildSpec: .codebuild/buildspec.yaml
                 InsecureSsl: false
                 Type: GITHUB
-                Location: https://github.com/mattsb42/pipipxx.git
+                Location: https://github.com/mattsb42/pipx-in-pipx.git
                 ReportBuildStatus: true
             BadgeEnabled: true
             Artifacts:

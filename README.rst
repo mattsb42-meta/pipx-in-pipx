@@ -26,8 +26,8 @@ pipx-in-pipx
 +----------+-----------------+---------------------------------+
 
 
-.. |Read The Docs| image:: https://readthedocs.org/projects/pipipxx/badge/
-   :target: https://pipipxx.readthedocs.io/en/stable/
+.. |Read The Docs| image:: https://readthedocs.org/projects/pipx-in-pipx/badge/
+   :target: https://pipx-in-pipx.readthedocs.io/
    :alt: Documentation Status
 .. |Travis CI| image:: https://travis-ci.org/mattsb42/pipipxx.svg?branch=master
    :target: https://travis-ci.org/mattsb42/pipipxx
