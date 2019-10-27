@@ -39,8 +39,6 @@ def _target_source_build(dist_path: str) -> Path:
 
 def _verify_is_installed(fake_home: Path) -> Path:
     _banner("Verifying the pipx IS installed")
-    for i in os.walk(str(fake_home.absolute()):
-        print(i)
     try:
         pipx_venv = fake_home / ".local" / "pipx" / "venvs" / "pipx"
         pipx_bin = fake_home / ".local" / ("Scripts" if os.name == "nt" else "bin") / "pipx"
@@ -51,6 +49,8 @@ def _verify_is_installed(fake_home: Path) -> Path:
             raise FileNotFoundError
         return pipx_bin
     except FileNotFoundError:
+        for i in os.walk(str(fake_home.absolute())):
+            print(i)
         _fail(f"pipx is not installed in {fake_home.absolute()}")
 
 
