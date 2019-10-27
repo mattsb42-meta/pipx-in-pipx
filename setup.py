@@ -11,7 +11,7 @@ from typing import Tuple
 from setuptools import setup  # type: ignore
 from setuptools.command.install import install  # type: ignore
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 HERE = os.path.abspath(os.path.dirname(__file__))
 UPDATE_PIP = "python -m pip install --upgrade pip"
 INSTALL_BOOTSTRAP_REQUIREMENTS = "python -m pip install pipx userpath"
