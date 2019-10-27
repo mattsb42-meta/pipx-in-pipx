@@ -1,0 +1,102 @@
+Description: CodeBuild projects for pipx-in-pipx project.
+Parameters:
+    GitHubOAuthToken:
+        Type: String
+        Description: GitHub OAuth token
+        NoEcho: true
+Resources:
+    CodeBuildRole:
+        Type: AWS::IAM::Role
+        Properties:
+            AssumeRolePolicyDocument:
+                Statement:
+                    -
+                        Effect: Allow
+                        Principal:
+                            Service: codebuild.amazonaws.com
+                        Action: sts:AssumeRole
+            Policies:
+                -
+                    PolicyName: CodeBuildAccess
+                    PolicyDocument:
+                        Statement:
+                            -
+                                Effect: Allow
+                                Action:
+                                    - logs:CreateLogGroup
+                                    - logs:CreateLogStream
+                                    - logs:PutLogEvents
+                                Resource:
+                                    - !Sub arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/*
+
+    LinuxCodeBuild:
+        Type: AWS::CodeBuild::Project
+        Properties:
+            Source:
+                Auth:
+                    Type: OAUTH
+                    Resource: !Ref GitHubOAuthToken
+                BuildSpec: .codebuild/buildspec.yaml
+                InsecureSsl: false
+                Type: GITHUB
+                Location: https://github.com/mattsb42/pipipxx.git
+                ReportBuildStatus: true
+            BadgeEnabled: true
+            Artifacts:
+                Type: NO_ARTIFACTS
+            Environment:
+                ComputeType: BUILD_GENERAL1_SMALL
+                Image: aws/codebuild/standard:2.0
+                Type: LINUX_CONTAINER
+                EnvironmentVariables:
+                    -
+                        Type: PLAINTEXT
+                        Name: PYTHON_BUILD_VERSION
+                        Value: "3.7"
+            LogsConfig:
+                CloudWatchLogs:
+                    Status: ENABLED
+            ServiceRole: !GetAtt CodeBuildRole.Arn
+            Triggers:
+                Webhook: true
+                FilterGroups:
+                    -
+                        -
+                            Type: EVENT
+                            Pattern: PUSH, PULL_REQUEST_CREATED, PULL_REQUEST_UPDATED, PULL_REQUEST_REOPENED
+
+    WindowsCodeBuild:
+        Type: AWS::CodeBuild::Project
+        Properties:
+            Source:
+                Auth:
+                    Type: OAUTH
+                    Resource: !Ref GitHubOAuthToken
+                BuildSpec: .codebuild/buildspec.yaml
+                InsecureSsl: false
+                Type: GITHUB
+                Location: https://github.com/mattsb42/pipipxx.git
+                ReportBuildStatus: true
+            BadgeEnabled: true
+            Artifacts:
+                Type: NO_ARTIFACTS
+            Environment:
+                ComputeType: BUILD_GENERAL1_MEDIUM
+                Image: aws/codebuild/windows-base:2.0
+                Type: WINDOWS_CONTAINER
+                EnvironmentVariables:
+                    -
+                        Type: PLAINTEXT
+                        Name: PYTHON_BUILD_VERSION
+                        Value: "3.7"
+            LogsConfig:
+                CloudWatchLogs:
+                    Status: ENABLED
+            ServiceRole: !GetAtt CodeBuildRole.Arn
+            Triggers:
+                Webhook: true
+                FilterGroups:
+                    -
+                        -
+                            Type: EVENT
+                            Pattern: PUSH, PULL_REQUEST_CREATED, PULL_REQUEST_UPDATED, PULL_REQUEST_REOPENED
