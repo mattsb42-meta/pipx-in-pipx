@@ -101,7 +101,7 @@ SETUP_KWARGS = dict(
 SETUP_NAMES = ["pipx-in-pipx"]
 ADDITIONAL_BUILD_NAMES = ["pipipxx"]
 
-if "BUILDING_PIPX_IN_PIX" in os.environ:
+if "BUILDING_PIPX_IN_PIPX" in os.environ:
     SETUP_NAMES += ADDITIONAL_BUILD_NAMES
 
 for name in SETUP_NAMES:
