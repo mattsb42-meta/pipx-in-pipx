@@ -86,6 +86,8 @@ This has two notable side effects:
    because their Pythons suddenly point to nothing.
 #. If you want to change the Python used by all of your `pipx`_-managed tools,
    you only need to reinstall one of them (`pipx`_) rather than reinstalling all of them.
+   ``pipx reinstall-all`` is commonly used to accomplish that, but when using
+   ``pipx-in-pipx``, `pipx`_ will uninstall itself!
 
 
 Uninstalling
