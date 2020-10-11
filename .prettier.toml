@@ -1,0 +1,7 @@
+tabWidth = 2
+useTabs = false
+printWidth = 90
+# Only use quotes in supported config file formats where necessary.
+quoteProps = "as-needed"
+# Force all newlines to line-feed-only.
+endOfLine = "lf"
