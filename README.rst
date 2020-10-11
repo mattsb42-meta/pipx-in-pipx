@@ -74,19 +74,31 @@ Which Python?
 =============
 
 By default, `pipx`_ uses its own Python for each environment that it creates.
-Normally, this would be the system Python, whatever it was when you installed `pipx`_.
-However, when your are using a ``pipx-in-pipx``-installed `pipx`_,
-the default Python that `pipx`_ uses for each environment it creates is instead
-whatever Python you used to "install" ``pipx-in-pipx``.
+This is whatever you used when you installed `pipx`_.
+This is most commonly the system Python,
+but if you use ``pipx-in-pipx`` to install your `pipx`_,
+it is the Python binary in the `pipx`_-managed virtualenv for `pipx`_.
+This, in turn, points to the Python that you used to install ``pipx-in-pipx``.
 
-This has two notable side effects:
+This has a few notable side effects:
 
-#. If you uninstall your `pipx`_-managed `pipx`_,
-   then all of the tools that you installed using that `pipx`_ will stop working
+#. If you uninstall your `pipx`_-managed `pipx`_ (``pipx uninstall pipx``),
+   all of the tools that you installed using that `pipx`_ will stop working
    because their Pythons suddenly point to nothing.
-#. If you want to change the Python used by all of your `pipx`_-managed tools,
-   you only need to reinstall one of them (`pipx`_) rather than reinstalling all of them.
 
+   * If you do this, you can fix it by installing ``pipx-in-pipx`` again.
+
+#. If you reinstall all `pipx`_ packages (``pipx reinstall-all``),
+   this uninstalls your `pipx`_-managed `pipx`_.
+
+   * If you do this, you can fix it by installing ``pipx-in-pipx`` again.
+   * If you want to reinstall all other packages,
+     tell `pipx`_ to ignore `pipx`_ (``pipx reinstall-all --skip pipx``).
+   * To reinstall `pipx`_, install ``pipx-in-pipx`` again.
+
+#. Because all `pipx`_-managed packages use the Python in the `pipx`_ virtualenv,
+   you can change the Python for all packages by
+   installing ``pipx-in-pipx`` again.
 
 Uninstalling
 ============
