@@ -1,12 +1,12 @@
 version: 0.2
 
 phases:
-    install:
-        runtime-versions:
-            python: "$PYTHON_BUILD_VERSION"
-        commands:
-            - pip install --upgrade pip tox
-    build:
-        commands:
-            - tox -e build
-            - python test/test_pipx-in-pipx.py --dist-directory "$(pwd)/dist"
+  install:
+    runtime-versions:
+      python: "$PYTHON_BUILD_VERSION"
+    commands:
+      - pip install --upgrade pip tox
+  build:
+    commands:
+      - tox -e build
+      - python test/test_pipx-in-pipx.py --dist-directory "$(pwd)/dist"
