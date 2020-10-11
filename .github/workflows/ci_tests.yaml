@@ -1,6 +1,12 @@
-name: Local Tests
+# This workflow runs local tests
+name: tests
 
-on: [pull_request]
+on:
+  pull_request:
+  push:
+  # Run once a day
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   tests:
