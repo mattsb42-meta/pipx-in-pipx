@@ -1,0 +1,26 @@
+# This workflow routes pull requests to the correct branch
+name: pull request router
+
+on: [pull_request_target]
+
+jobs:
+  route-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: move to development
+        # Move any PRs to release that do *not* come from dev
+        if: github.base_ref == 'release' && github.head_ref != 'dev'
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ secrets.WRITE_BOT_TOKEN }}
+          script: |
+            github.pulls.update({
+              pull_number: context.issue.number,
+              base: 'dev',
+              ...context.repo
+            })
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              body: 'Moving target to development branch.',
+              ...context.repo
+            })

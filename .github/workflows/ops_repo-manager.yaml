@@ -1,0 +1,17 @@
+# This workflow applies repository settings once they land in release.
+name: Apply repository settings
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  apply-settings:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: mattsb42/repo-manager@v1.0.0
+        with:
+          github-token: ${{ secrets.ADMIN_BOT_TOKEN }}
+          debug: true

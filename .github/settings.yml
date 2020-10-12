@@ -1,0 +1,132 @@
+repository:
+  name: pipx-in-pipx
+  description: Bootstrap your pipx with pipx.
+  has_wiki: false
+
+  delete_branch_on_merge: true
+
+  default_branch: dev
+  allow_squash_merge: true
+  allow_merge_commit: true
+  allow_rebase_merge: true
+
+teams:
+  - name: admins
+    permission: admin
+  - name: bots
+    permission: push
+
+labels:
+  # Default labels
+  - name: bug
+    color: d73a4a
+    description: Something isn't working
+  - name: duplicate
+    color: cfd3d7
+    description: This issue or pull request already exists
+  - name: enhancement
+    color: a2eeef
+    description: New feature or request
+  - name: good first issue
+    color: 7057ff
+    description: Good for newcomers
+  - name: help wanted
+    color: 008672
+    description: Extra attention is needed
+  - name: invalid
+    color: e4e669
+    description: This doesn't seem right
+  - name: question
+    color: d876e3
+    description: Further information is requested
+  - name: wontfix
+    color: ffffff
+    description: This will not be worked on
+  # Custom labels
+  - name: next release
+    color: 8D09F3
+    description: Required for next release
+  - name: block-merge
+    color: ff0000
+    description: Do not automatically merge
+
+branches:
+  - name: dev
+    protection:
+      required_pull_request_reviews:
+        required_approving_review_count: 1
+        dismiss_stale_reviews: true
+      restrictions: null
+      enforce_admins: true
+      required_linear_history: true
+      required_status_checks:
+        strict: true
+        contexts:
+          # Pull Request Requirements
+          - route-pull-request
+          # Static Analysis
+          - analysis (mypy)
+          - analysis (lint)
+          - prettier
+          # Linux
+          - tests (ubuntu-latest, 3.6, x64, local)
+          - tests (ubuntu-latest, 3.7, x64, local)
+          - tests (ubuntu-latest, 3.8, x64, local)
+          - tests (ubuntu-latest, 3.9, x64, local)
+          - tests (ubuntu-latest, 3.x, x64, local)
+          # MacOS
+          - tests (macos-latest, 3.6, x64, local)
+          - tests (macos-latest, 3.7, x64, local)
+          - tests (macos-latest, 3.8, x64, local)
+          - tests (macos-latest, 3.9, x64, local)
+          - tests (macos-latest, 3.x, x64, local)
+          # Windows x86
+          - tests (windows-latest, 3.6, x86, local)
+          - tests (windows-latest, 3.7, x86, local)
+          - tests (windows-latest, 3.8, x86, local)
+          - tests (windows-latest, 3.9, x86, local)
+          - tests (windows-latest, 3.x, x86, local)
+          # Windows x64
+          - tests (windows-latest, 3.6, x64, local)
+          - tests (windows-latest, 3.7, x64, local)
+          - tests (windows-latest, 3.8, x64, local)
+          - tests (windows-latest, 3.9, x64, local)
+          - tests (windows-latest, 3.x, x64, local)
+  - name: release
+    protection:
+      required_pull_request_reviews: null
+      restrictions: null
+      enforce_admins: true
+      required_status_checks:
+        strict: false
+        contexts:
+          # Pull Request Requirements
+          - route-pull-request
+          # Static Analysis
+          - analysis (mypy)
+          - analysis (lint)
+          - prettier
+          # Linux
+          - tests (ubuntu-latest, 3.6, x64, local)
+          - tests (ubuntu-latest, 3.7, x64, local)
+          - tests (ubuntu-latest, 3.8, x64, local)
+          - tests (ubuntu-latest, 3.9, x64, local)
+          - tests (ubuntu-latest, 3.x, x64, local)
+          # MacOS
+          - tests (macos-latest, 3.6, x64, local)
+          - tests (macos-latest, 3.7, x64, local)
+          - tests (macos-latest, 3.8, x64, local)
+          - tests (macos-latest, 3.9, x64, local)
+          - tests (macos-latest, 3.x, x64, local)
+          # Windows x86
+          - tests (windows-latest, 3.6, x86, local)
+          - tests (windows-latest, 3.7, x86, local)
+          - tests (windows-latest, 3.8, x86, local)
+          - tests (windows-latest, 3.9, x86, local)
+          - tests (windows-latest, 3.x, x86, local)
+          # Windows x64
+          - tests (windows-latest, 3.6, x64, local)
+          - tests (windows-latest, 3.7, x64, local)
+          - tests (windows-latest, 3.8, x64, local)
+          - tests (windows-latest, 3.9, x64, local)
+          - tests (windows-latest, 3.x, x64, local)
