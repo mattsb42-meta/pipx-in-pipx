@@ -1,0 +1,22 @@
+# This workflow routes pull requests to the correct branch
+name: Promote dev branch to release
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  promote-to-release-pr:
+    name: Promote dev branch to release
+    runs-on: ubuntu-latest
+    steps:
+      - name: promote
+        uses: vsoch/pull-request-action@1.0.10
+        env:
+          GITHUB_TOKEN: ${{ secrets.WRITE_BOT_TOKEN }}
+          BRANCH_PREFIX: dev
+          PULL_REQUEST_BRANCH: release
+          PULL_REQUEST_TITLE: Promote dev to release
+          PULL_REQUEST_BODY: |
+            Automatic promotion from dev to release.

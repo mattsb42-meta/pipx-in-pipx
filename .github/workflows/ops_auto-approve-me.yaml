@@ -1,0 +1,18 @@
+# Automatically approve my commits
+# so that I don't need special logic
+# integrated with any checks.
+#
+# Remove this when appropriate.
+name: auto-approve mattsb42 PRs
+
+on: [pull_request_target]
+
+jobs:
+  auto-approve:
+    if: github.base_ref == 'dev' && ( github.actor == 'mattsb42' || github.actor == 'mattsb42-aws' )
+    runs-on: ubuntu-latest
+    steps:
+      - name: auto-approve mattsb42
+        uses: hmarr/auto-approve-action@v2.0.0
+        with:
+          github-token: ${{ secrets.WRITE_BOT_TOKEN }}
