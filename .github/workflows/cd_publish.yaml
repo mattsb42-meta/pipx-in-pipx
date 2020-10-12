@@ -1,0 +1,39 @@
+# This workflow handles publishing artifacts to targets outside GitHub
+name: publish external artifacts
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  test-pypi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade -r ci-requirements.txt
+      - name: publish to test-PyPI
+        env:
+          TOXENV: test-release
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_TOKEN }}
+        run: tox -- -vv
+  pypi:
+    needs: test-pypi
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.x
+      - run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade -r ci-requirements.txt
+      - name: publish to PyPI
+        env:
+          TOXENV: release
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+        run: tox -- -vv
