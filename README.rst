@@ -15,29 +15,24 @@ pipx-in-pipx
    :alt: Code style: black
 
 
-+----------+-----------------+---------------------------------+
-| docs     | read-the-docs   | |Read The Docs|                 |
-+----------+-----------------+---------------------------------+
-| linux    | static analysis | |Travis CI|                     |
-+----------+-----------------+---------------------------------+
-| linux    | CPython 3.7     | |CodeBuild Linux CPython 3.7|   |
-+----------+-----------------+---------------------------------+
-| windows  | CPython 3.7     | |CodeBuild Windows CPython 3.7| |
-+----------+-----------------+---------------------------------+
++----------+-----------------+-------------------+
+| docs     | read-the-docs   | |Read The Docs|   |
++----------+-----------------+-------------------+
+| tests    | static analysis | |Static Analysis| |
++----------+-----------------+-------------------+
+| tests    | all tests       | |Tests|           |
++----------+-----------------+-------------------+
 
 
 .. |Read The Docs| image:: https://readthedocs.org/projects/pipx-in-pipx/badge/
    :target: https://pipx-in-pipx.readthedocs.io/
    :alt: Documentation Status
-.. |Travis CI| image:: https://travis-ci.org/mattsb42/pipx-in-pipx.svg?branch=master
-   :target: https://travis-ci.org/mattsb42/pipx-in-pipx
-   :alt: Travis CI Test Status
-.. |CodeBuild Linux CPython 3.7| image:: https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiZi9uT0MrNGNXV2RSbitIdTBhM1BXTDBSR2ZjbEZmK3lBTmUxS1hkbUc5azFXVDIwdnFOdjRwUG95QnNHUDFwV0xjemhXcDcvVjdaNFEweGdVRFBsdEZNPSIsIml2UGFyYW1ldGVyU3BlYyI6Ik9TRWdNbmpMKzRwZGxvMUIiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master
-   :target: https://us-west-2.console.aws.amazon.com/codesuite/codebuild/projects/LinuxCodeBuild-s5JgvxjQs15C/history?region=us-west-2
-   :alt: Linux Python 3.7
-.. |CodeBuild Windows CPython 3.7| image:: https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiQ1BUdWNIamZaZUpnRkVBdTZxbmJkNmVrMnpCWnlBbFZvVkcyNmp1cG1tZ2dkVzVMYzR1OHE1VnRmZTFSaGhLQ29vK2ZPZEJvKzJwWFhVVTdIZ2dzNjVnPSIsIml2UGFyYW1ldGVyU3BlYyI6Ildkdkw3OW5zdmRmTFQydVAiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master
-   :target: https://us-west-2.console.aws.amazon.com/codesuite/codebuild/projects/WindowsCodeBuild-BVQ5nOqkXcWR/history?region=us-west-2
-   :alt: Linux Python 3.7
+.. |Static Analysis| image:: https://github.com/mattsb42-meta/pipx-in-pipx/workflows/static%20analysis/badge.svg
+   :target: https://github.com/mattsb42-meta/pipx-in-pipx/actions?query=workflow%3A%22static+analysis%22
+   :alt: Static Analysis
+.. |Tests| image:: https://github.com/mattsb42-meta/pipx-in-pipx/workflows/tests/badge.svg
+   :target: https://github.com/mattsb42-meta/pipx-in-pipx/actions?query=workflow%3Atests
+   :alt: Tests
 
 
 `pipx`_ is great for keeping your CLI tools isolated and your system Python paths clean.
