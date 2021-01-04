@@ -10,7 +10,8 @@ from pathlib import Path
 
 
 def _fail(error_message: str):
-    sys.exit(f"ERROR: {error_message}")
+    print(f"ERROR: {error_message}", file=sys.stderr)
+    sys.exit(1)
 
 
 def _banner(message: str):
@@ -49,8 +50,6 @@ def _verify_is_installed(fake_home: Path) -> Path:
             raise FileNotFoundError
         return pipx_bin
     except FileNotFoundError:
-        for i in os.walk(str(fake_home.absolute())):
-            print(i)
         _fail(f"pipx is not installed in {fake_home.absolute()}")
 
 
