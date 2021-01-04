@@ -73,8 +73,16 @@ def install_and_verify(source_build: Path, fake_home: Path) -> None:
     pipx_bin = _verify_is_installed(fake_home)
 
     result = subprocess.run([str(pipx_bin.absolute()), "--help"], check=False)
+    console_width = os.get_terminal_size().columns
+    print("".center(console_width, "*"))
+    print(" STDERR OUTPUT ".center(console_width, "*"))
+    print("".center(console_width, "*"))
     print(result.stdout)
+    print("".center(console_width, "*"))
+    print(" STDOUT OUTPUT ".center(console_width, "*"))
+    print("".center(console_width, "*"))
     print(result.stderr)
+    print("".center(console_width, "*"))
 
 
 def main(args=None):
