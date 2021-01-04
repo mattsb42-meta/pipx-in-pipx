@@ -10,11 +10,12 @@ from pathlib import Path
 
 
 def _fail(error_message: str):
-    sys.exit(f"ERROR: {error_message}")
+    print(f"ERROR: {error_message}", file=sys.stderr, flush=True)
+    sys.exit(1)
 
 
 def _banner(message: str):
-    print(f" {message} ".center(64))
+    print(f" {message} ".center(64), flush=True)
 
 
 def _target_source_build(dist_path: str) -> Path:
@@ -49,8 +50,6 @@ def _verify_is_installed(fake_home: Path) -> Path:
             raise FileNotFoundError
         return pipx_bin
     except FileNotFoundError:
-        for i in os.walk(str(fake_home.absolute())):
-            print(i)
         _fail(f"pipx is not installed in {fake_home.absolute()}")
 
 
@@ -73,8 +72,16 @@ def install_and_verify(source_build: Path, fake_home: Path) -> None:
     pipx_bin = _verify_is_installed(fake_home)
 
     result = subprocess.run([str(pipx_bin.absolute()), "--help"], check=False)
-    print(result.stdout)
-    print(result.stderr)
+    console_width = os.get_terminal_size().columns
+    print("".center(console_width, "*"), flush=True)
+    print(" STDERR OUTPUT ".center(console_width, "*"), flush=True)
+    print("".center(console_width, "*"), flush=True)
+    print(result.stdout, flush=True)
+    print("".center(console_width, "*"), flush=True)
+    print(" STDOUT OUTPUT ".center(console_width, "*"), flush=True)
+    print("".center(console_width, "*"), flush=True)
+    print(result.stderr, flush=True)
+    print("".center(console_width, "*"), flush=True)
 
 
 def main(args=None):
