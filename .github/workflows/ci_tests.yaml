@@ -38,6 +38,7 @@ jobs:
       - run: |
           python -m pip install --upgrade pip
           pip install --upgrade -r ci-requirements.txt
+          pip uninstall pipx
       - name: run test
         run: |
           tox -e build
