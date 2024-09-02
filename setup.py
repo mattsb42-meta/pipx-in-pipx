@@ -44,7 +44,7 @@ def _execute_in_venv(venv_dir: str, command: str) -> Tuple[str, str]:
 def bootstrap() -> None:
     """Bootstrap ``pipx`` in your ``~/.local/`` using ``pipx`` in a temporary venv."""
     if "VIRTUAL_ENV" in os.environ:
-        raise EnvironmentError("pipipxx cannot be used inside a virtual environment.")
+        raise EnvironmentError("pipx-in-pipx cannot be used inside a virtual environment.")
 
     with tempfile.TemporaryDirectory() as venv_dir:
         # 1. Create tempfiles venv.
@@ -74,7 +74,7 @@ def read(*args: str) -> str:
 
 SETUP_KWARGS = dict(
     version=__version__,
-    url="https://github.com/mattsb42/pipipxx",
+    url="https://github.com/mattsb42/pipx-in-pipx",
     author="Matt Bullock",
     author_email="m@ttsb42.com",
     maintainer="Matt Bullock",
